@@ -7,8 +7,10 @@ resource "aws_db_subnet_group" "poc" {
 resource "aws_security_group" "rds" {
   name   = "poc_rds"
   vpc_id = module.vpc.vpc_id
+  description = "Allowd inbount MySQL"
 
   ingress {
+    description     = "Access to MariaDB database"
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
@@ -16,6 +18,7 @@ resource "aws_security_group" "rds" {
   }
 
   egress {
+    description     = "Access to MariaDB database"
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
@@ -23,6 +26,7 @@ resource "aws_security_group" "rds" {
   }
 }
 
+#tfsec:ignore:aws-rds-enable-performance-insights
 resource "aws_db_instance" "rds_poc" {
   identifier             = "rds-poc"
   instance_class         = "db.t3.micro"

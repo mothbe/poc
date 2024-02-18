@@ -144,6 +144,7 @@ resource "aws_autoscaling_attachment" "poc" {
 resource "aws_security_group" "poc_instance" {
   name = "instance-poc"
   ingress {
+    description     = "Allow connect to HTTP"
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
@@ -152,6 +153,7 @@ resource "aws_security_group" "poc_instance" {
 
   # just for testing
   # ingress {
+  #   description     = "Allow connect to SSH"
   #   from_port       = 22
   #   to_port         = 22
   #   protocol        = "tcp"
@@ -159,14 +161,16 @@ resource "aws_security_group" "poc_instance" {
   # }
 
 
-  egress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = concat(var.secureweb_ips, var.repo_example_ips)
-  }
+  # egress {
+  #   description = "Allow connect to HTTPS"
+  #   from_port   = 443
+  #   to_port     = 443
+  #   protocol    = "tcp"
+  #   cidr_blocks = concat(var.secureweb_ips, var.repo_example_ips)
+  # }
 
   egress {
+    description = "Allow connect to everywhere"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

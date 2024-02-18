@@ -1,17 +1,5 @@
 repos:
-  # - repo: https://github.com/pre-commit/pre-commit-hooks
-  #   rev: v3.4.0
-  #   hooks:
-  #     - id: trailing-whitespace
-  #     - id: check-yaml
-  #     - id: check-json
-  #     - id: check-merge-conflict
-  #     - id: end-of-file-fixer
   - repo: https://github.com/gruntwork-io/pre-commit
     rev: v0.1.11
     hooks:
       - id: terraform-fmt
-  # - repo: https://github.com/antonbabenko/pre-commit-terraform
-  #   rev: v1.47.0
-  #   hooks:
-  #     - id: terraform_tfsec
