@@ -5,8 +5,8 @@ resource "aws_db_subnet_group" "poc" {
 
 
 resource "aws_security_group" "rds" {
-  name   = "poc_rds"
-  vpc_id = module.vpc.vpc_id
+  name        = "poc_rds"
+  vpc_id      = module.vpc.vpc_id
   description = "Allowd inbount MySQL"
 
   ingress {
