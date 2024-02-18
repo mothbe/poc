@@ -4,10 +4,10 @@ variable "region" {
 }
 
 # just for testing
-# variable "ssh_allowed_ips" {
-#   type    = list(string)
-#   default = ["31.182.217.61/32"]
-# }
+variable "ssh_allowed_ips" {
+  type    = list(string)
+  default = ["31.182.217.61/32"]
+}
 
 variable "db" {
   type = map(string)

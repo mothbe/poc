@@ -151,7 +151,7 @@ resource "aws_security_group" "poc_instance" {
     security_groups = [aws_security_group.poc_lb.id]
   }
 
-  # just for testing
+  # # just for testing
   # ingress {
   #   description     = "Allow connect to SSH"
   #   from_port       = 22
@@ -161,13 +161,13 @@ resource "aws_security_group" "poc_instance" {
   # }
 
 
-  # egress {
-  #   description = "Allow connect to HTTPS"
-  #   from_port   = 443
-  #   to_port     = 443
-  #   protocol    = "tcp"
-  #   cidr_blocks = concat(var.secureweb_ips, var.repo_example_ips)
-  # }
+  egress {
+    description = "Allow connect to HTTPS"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = concat(var.secureweb_ips, var.repo_example_ips)
+  }
 
   egress {
     description = "Allow connect to everywhere"
@@ -196,7 +196,7 @@ resource "aws_security_group" "poc_lb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # just for testing
+  # # just for testing
   # ingress {
   #   from_port   = 22
   #   to_port     = 22
